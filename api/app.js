@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const db = require('./models');
 const app = express();
 const PORT = process.env.PORT;
 
@@ -25,10 +24,6 @@ if(process.env.NODE_ENV==='production') {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
-
-// update DB tables based on model updates. Does not handle renaming tables/columns
-// NOTE: toggling this to true drops all tables (including data)
-db.sequelize.sync({ force: false });
 
 // start up the server
 if(PORT) {
