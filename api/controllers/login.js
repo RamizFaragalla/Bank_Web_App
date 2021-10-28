@@ -20,10 +20,13 @@ router.get('/', async (req,res) => {
   const username = req.body.username.toLowerCase();
   const password = req.body.password;
 
-  query = "SELECT * FROM security_info";
-  query += " WHERE username = ?"
+  query1 = "SELECT * FROM security_info";
+  query1 += " WHERE username = ?"
 
-  const rows = await loginQueryPromise(query, username, password);
+  query2 = "SELECT * FROM customer";
+  query2 += " WHERE customer_id = ?";
+
+  const rows = await loginQueryPromise(query1, username, password);
 
   try {
     if (rows.length == 0) {
@@ -31,7 +34,16 @@ router.get('/', async (req,res) => {
     }
     else {
       if (await bcrypt.compare(password, rows[0].hashed_password)) {
-        res.status(200).json({"customer_id": rows[0].customer_id_fk});
+        db.query(query2, [rows[0].customer_id_fk], function (err, rows) {
+          if (err) {
+            console.log(err);
+            res.status(500).end();
+          }
+      
+          res.status(200).json(rows[0]);
+          
+        })
+        // res.status(200).json({"customer_id": rows[0].customer_id_fk});
       }
       else {
         res.status(401).json({"message": "invalid username or password"});
