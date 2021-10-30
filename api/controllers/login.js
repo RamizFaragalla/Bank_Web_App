@@ -41,9 +41,7 @@ router.get('/', async (req,res) => {
           }
       
           res.status(200).json(rows[0]);
-          
         })
-        // res.status(200).json({"customer_id": rows[0].customer_id_fk});
       }
       else {
         res.status(401).json({"message": "invalid username or password"});
