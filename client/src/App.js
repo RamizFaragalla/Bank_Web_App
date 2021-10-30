@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage';
 import Accounts from './pages/Accounts';
 import CheckingsTransaction from './pages/CheckingsTransaction';
 import SavingsTransaction from './pages/SavingsTransactions';
+import Transactions from './pages/Transactions';
 
 import './App.css';
 
@@ -49,17 +50,14 @@ class App extends React.Component {
           <div className="row justify-content-center">
             <Switch>
               <Route path="/login" component={Login} />
-              {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/accounts" component={Accounts} />
               <Route path="/accounts-checkingstransaction" component={CheckingsTransaction} />
               <Route path="/accounts-savingstransaction" component={SavingsTransaction} />
+              <Route path="/transactions/:account_num" component={Transactions} />
               <Route path="/" component={HomePage} />
             </Switch>
           </div>
-      
-      
-
       </div>
       </Router>
     );

@@ -1,22 +1,22 @@
 import React from 'react';
-import Post from '../components/Post';
+import Transaction from '../components/Transaction';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
 
-class ShowPostPage extends React.Component {
+class Transactions extends React.Component {
   state = {
     loading: true,
-    post: null,
+    transactions: [],
     notFound: false,
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    fetch("/api/posts/"+id)
+    const { account_num } = this.props.match.params;
+    fetch("/api/transactions/" + account_num)
       .then(res => res.json())
-      .then(post => {
+      .then(transactions => {
         this.setState({
-          post: <Post {...post} />,
+          transactions: transactions.map((p,ii) => <Transaction {...p} key={ii} />),
           loading: false,
         });
       })
@@ -31,8 +31,8 @@ class ShowPostPage extends React.Component {
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
-    return this.state.post;
+    return this.state.transactions;
   }
 }
 
-export default ShowPostPage;
+export default Transactions;

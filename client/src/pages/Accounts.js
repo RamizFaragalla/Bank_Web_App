@@ -1,21 +1,39 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import Account from '../components/Account';
+import Loading from '../components/Loading';
 
-function Accounts() {
+
+class Accounts extends React.Component {
+  state = {
+    accounts: [],
+    loading: true,
+  }
+
+  componentDidMount() {
+    fetch("/api/accounts/" + sessionStorage.getItem("customer_id"))
+      .then(res => res.json())
+      .then(accounts => {
+        this.setState({
+          loading: false,
+          accounts: accounts.map((p,ii) => <Account {...p} key={ii} />),
+        });
+      })
+      .catch(err => console.log("API ERROR: ", err));
+  }
+
+  render() {
+    if(this.state.loading) {
+      return <Loading />;
+    }
+
     return (
-        <div className="container mt-3">
-            <div className ="row">
-                <div className="col border">
-                    <p>Checkings</p>
-                    <Link to="/accounts-checkingstransaction"><button type="button">Check Checkings Transactions</button></Link>
-                </div>
-                <div className="col border">
-                    <p>Savings</p>
-                    <Link to="/accounts-savingstransaction"><button type="button button-primary">Check Savings Transactions</button></Link>
-                </div>
-            </div>
+      <div className="container-fluid text-center">
+        <div className="row justify-content-center">
+          { this.state.accounts }
         </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default Accounts;
