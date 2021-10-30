@@ -1,7 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class PostFormPage extends React.Component {
+class Login extends React.Component {
   state = {
     error: false,
     success: false,
@@ -12,7 +12,10 @@ class PostFormPage extends React.Component {
     this.setState({
       content: event.target.value
     });
+
+    
   }
+
 
   savePost = (event) => {
     fetch("/api/posts/", {
@@ -43,13 +46,14 @@ class PostFormPage extends React.Component {
   }
 
   render() {
-    if(this.state.success) return <Redirect to="/" />;
+  
+    // if(this.state.success) return <Redirect to="/" />;
 
     let errorMessage = null;
     if(this.state.error) {
       errorMessage = (
         <div className="alert alert-danger">
-          "There was an error saving this post."
+          "Username and/or password is empty"
         </div>
       );
     }
@@ -60,16 +64,24 @@ class PostFormPage extends React.Component {
         <div className="input-group">
           <input 
             type="text" 
-            placeholder="Add your words of wisdom here..." 
+            placeholder="Username" 
             value={this.state.content}
             className="form-control mr-3 rounded"
             onChange={this.contentChanged}
           />
-          <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
+          <br/>
+          <input 
+          type="text" 
+          placeholder="Password" 
+          value={this.state.content}
+          className="form-control mr-3 rounded"
+          onChange={this.contentChanged}
+          />
+          <Link to = "/accounts"><button type="button">Login </button></Link>
         </div>
       </div>
     );
   }
 }
 
-export default PostFormPage;
+export default Login;

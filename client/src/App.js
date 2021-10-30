@@ -1,27 +1,30 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
   NavLink
 } from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
-import ShowPostPage from './pages/ShowPostPage';
+// import PostsListPage from './pages/PostsListPage';
+import Login from './pages/Login';
+// import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import HomePage from './pages/HomePage';
+import Accounts from './pages/Accounts';
+import Transaction from './pages/Transactions';
 
 import './App.css';
 
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-secondary shadow mb-3">
+      <Link className="navbar-brand" to="/">X-Bank</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+          <NavLink className="nav-link" exact to="/login">
+            Login
           </NavLink>
         </li>
         <li className="nav-item">
@@ -38,19 +41,24 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
-        <Router>
-          <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
-              </Switch>
-            </div>
+      <Router History={History}>
+        <Navigation />
+        <div className="container-fluid text-center">
+          <div className="row justify-content-center">
+            <Switch>
+              <Route path="/login" component={Login} />
+              {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
+              <Route path="/about-us" component={AboutUsPage} />
+              <Route path="/accounts" component={Accounts} />
+              <Route path="/transaction" component={Transaction} />
+              <Route path="/" component={HomePage} />
+            </Switch>
           </div>
-        </Router>
+      
+      
+
+      </div>
+      </Router>
     );
   }
 }
