@@ -12,9 +12,11 @@ import Login from './pages/Login';
 import AboutUsPage from './pages/AboutUsPage';
 import HomePage from './pages/HomePage';
 import Accounts from './pages/Accounts';
-import Transaction from './pages/Transactions';
+import CheckingsTransaction from './pages/CheckingsTransaction';
+import SavingsTransaction from './pages/SavingsTransactions';
 
 import './App.css';
+
 
 
 function Navigation(props) {
@@ -50,7 +52,8 @@ class App extends React.Component {
               {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/accounts" component={Accounts} />
-              <Route path="/transaction" component={Transaction} />
+              <Route path="/accounts-checkingstransaction" component={CheckingsTransaction} />
+              <Route path="/accounts-savingstransaction" component={SavingsTransaction} />
               <Route path="/" component={HomePage} />
             </Switch>
           </div>

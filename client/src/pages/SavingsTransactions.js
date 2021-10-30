@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Transaction() {
+function SavingsTransaction() {
     return (
         <p>Test</p>
     )
 }
-export default Transaction;
+export default SavingsTransaction;
