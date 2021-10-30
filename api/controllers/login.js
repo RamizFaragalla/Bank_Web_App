@@ -15,7 +15,7 @@ loginQueryPromise = (query, username, password) => {
   });
 };
 
-router.get('/', async (req,res) => {
+router.post('/', async (req,res) => {
 
   const username = req.body.username.toLowerCase();
   const password = req.body.password;
