@@ -6,14 +6,10 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
-// import PostsListPage from './pages/PostsListPage';
 import Login from './pages/Login';
-// import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import HomePage from './pages/HomePage';
 import Accounts from './pages/Accounts';
-import CheckingsTransaction from './pages/CheckingsTransaction';
-import SavingsTransaction from './pages/SavingsTransactions';
 import Transactions from './pages/Transactions';
 
 import './App.css';
@@ -52,8 +48,6 @@ class App extends React.Component {
               <Route path="/login" component={Login} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/accounts" component={Accounts} />
-              <Route path="/accounts-checkingstransaction" component={CheckingsTransaction} />
-              <Route path="/accounts-savingstransaction" component={SavingsTransaction} />
               <Route path="/transactions/:account_num" component={Transactions} />
               <Route path="/" component={HomePage} />
             </Switch>
@@ -63,6 +57,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;

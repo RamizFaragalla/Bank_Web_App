@@ -81,9 +81,6 @@ class Login extends React.Component {
   }
 
   handleSubmit = data => {
-    // const json = JSON.stringify(data, null, 4);
-    // console.clear();
-    // console.log(json);
     const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
