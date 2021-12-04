@@ -41,7 +41,7 @@ router.post('/', async (req,res) => {
     }
 
     else if (rows.length != 2) {
-      res.status(400).json({"message": "invalid sender and/or recipient account number(s)."});
+      res.status(400).json({"message": "invalid recipient account number."});
       return;
     }
 

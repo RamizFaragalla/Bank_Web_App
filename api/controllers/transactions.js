@@ -29,7 +29,7 @@ router.post('/', async (req,res) => {
         }
     
         if (rows.length == 0) {
-          res.status(404).json({"message": "account doens't have any transactions"});
+          res.status(404).json({"message": "account doesn't have any transactions"});
         }
         else {
           res.status(200).json(rows);

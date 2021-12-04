@@ -26,7 +26,7 @@ class Transactions extends React.Component {
     fetch("/api/transactions", requestOptions)
       .then(res => res.json())
       .then(transactions => {
-        if (transactions.message === "account doens't have any transactions") {
+        if (transactions.message === "account doesn't have any transactions") {
           this.setState({
             transactions: transactions.message,
             loading: false,
