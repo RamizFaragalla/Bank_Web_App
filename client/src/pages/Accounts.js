@@ -28,6 +28,8 @@ class Accounts extends React.Component {
 
     return (
       <div className="container-fluid text-center">
+        <div> {"Welcome " + sessionStorage.getItem("first_name") + "!"} </div>
+        <br/>
         <div className="row justify-content-center">
           { this.state.accounts }
         </div>

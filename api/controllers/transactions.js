@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
-router.get('/:account_num', async (req,res) => {
+router.post('/', async (req,res) => {
 
-  const { account_num } = req.params;
+  const account_num = req.body.account_num;
 
   query1 = "SELECT * FROM account";
   query1 += " WHERE account_num = ?";

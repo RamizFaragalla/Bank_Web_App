@@ -11,8 +11,19 @@ class Transactions extends React.Component {
   }
 
   componentDidMount() {
-    const { account_num } = this.props.match.params;
-    fetch("/api/transactions/" + account_num)
+    const account_num = this.props.location.state;
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(
+        {
+          account_num: account_num
+        }
+      )
+    };
+
+    fetch("/api/transactions", requestOptions)
       .then(res => res.json())
       .then(transactions => {
         if (transactions.message === "account doens't have any transactions") {

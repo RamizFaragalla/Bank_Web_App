@@ -85,7 +85,7 @@ class MoneyTransfer extends React.Component {
   }
 
   handleSubmit = data => {
-    const { sender_account_num } = this.props.match.params;
+    const sender_account_num = this.props.location.state;
 
     this.setState({
       loading: true

@@ -50,9 +50,9 @@ class App extends React.Component {
               <Route path="/login" component={Login} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/accounts" component={Accounts} />
-              <Route path="/transactions/:account_num" component={Transactions} />
-              <Route path="/money_transfer/:sender_account_num" component={MoneyTransfer} />
-              <Route path="/money_transfer_history/:account_num" component={MoneyTransferHistory} />
+              <Route path="/transactions" component={Transactions} />
+              <Route path="/money_transfer" component={MoneyTransfer} />
+              <Route path="/money_transfer_history" component={MoneyTransferHistory} />
               <Route path="/" component={HomePage} />
             </Switch>
           </div>

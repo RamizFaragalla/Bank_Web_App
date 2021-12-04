@@ -11,9 +11,19 @@ class MoneyTransferHistory extends React.Component {
   }
 
   componentDidMount() {
-    const { account_num } = this.props.match.params;
+    const account_num = this.props.location.state;
 
-    fetch("/api/money_transfer/" + account_num)
+    const requestOptions = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(
+        {
+          account_num: account_num
+        }
+      )
+    };
+
+    fetch("/api/money_transfer_history", requestOptions)
       .then(res => res.json())
       .then(moneyTransferHistory => {
 				if (moneyTransferHistory.message === "no money transfer history") {

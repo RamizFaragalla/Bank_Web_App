@@ -8,6 +8,7 @@ const loginController = require('./login.js');
 const accountsController = require('./accounts.js');
 const transactionsController = require('./transactions.js');
 const moneyTransferController = require('./money_transfer.js');
+const moneyTransferHistoryController = require('./money_transfer_history.js');
 
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
@@ -16,5 +17,6 @@ router.use('/login', loginController);
 router.use('/accounts', accountsController);
 router.use('/transactions', transactionsController);
 router.use('/money_transfer', moneyTransferController);
+router.use('/money_transfer_history', moneyTransferHistoryController);
 
 module.exports = router;
