@@ -15,10 +15,19 @@ class Transactions extends React.Component {
     fetch("/api/transactions/" + account_num)
       .then(res => res.json())
       .then(transactions => {
-        this.setState({
-          transactions: transactions.map((p,ii) => <Transaction {...p} key={ii} />),
-          loading: false,
-        });
+        if (transactions.message === "account doens't have any transactions") {
+          this.setState({
+            transactions: transactions.message,
+            loading: false,
+          });
+        }
+
+        else {
+          this.setState({
+            transactions: transactions.map((p,ii) => <Transaction {...p} key={ii} />),
+            loading: false,
+          });
+        }
       })
       .catch(err => {
         this.setState({

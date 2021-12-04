@@ -11,6 +11,8 @@ import AboutUsPage from './pages/AboutUsPage';
 import HomePage from './pages/HomePage';
 import Accounts from './pages/Accounts';
 import Transactions from './pages/Transactions';
+import MoneyTransfer from './pages/MoneyTransfer';
+import MoneyTransferHistory from './pages/MoneyTransferHistory';
 
 import './App.css';
 
@@ -49,6 +51,8 @@ class App extends React.Component {
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/accounts" component={Accounts} />
               <Route path="/transactions/:account_num" component={Transactions} />
+              <Route path="/money_transfer/:sender_account_num" component={MoneyTransfer} />
+              <Route path="/money_transfer_history/:account_num" component={MoneyTransferHistory} />
               <Route path="/" component={HomePage} />
             </Switch>
           </div>
