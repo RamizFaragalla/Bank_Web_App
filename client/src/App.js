@@ -15,7 +15,9 @@ import MoneyTransfer from './pages/MoneyTransfer';
 import MoneyTransferHistory from './pages/MoneyTransferHistory';
 
 import './App.css';
-
+import Footer from './components/Footer';
+import Contact from './pages/Contact';
+import Help from './pages/Help';
 
 
 function Navigation(props) {
@@ -53,10 +55,13 @@ class App extends React.Component {
               <Route path="/transactions" component={Transactions} />
               <Route path="/money_transfer" component={MoneyTransfer} />
               <Route path="/money_transfer_history" component={MoneyTransferHistory} />
+              <Route path="/contact-us" component={Contact} />
+              <Route path="/help" component={Help} />
               <Route path="/" component={HomePage} />
             </Switch>
           </div>
       </div>
+      <Footer/>
       </Router>
     );
   }
